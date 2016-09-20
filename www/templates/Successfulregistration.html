@@ -1,0 +1,18 @@
+<ion-view>
+<ion-nav-bar class="button-clear">
+  <ion-nav-buttons class="nbutton-bgcolor" side="left" >
+    <button class=" button button-light header-item" ng-click="goBack()">
+      <i class="icon ion-arrow-left-c"> </i> 
+    </button>
+  </ion-nav-buttons>
+</ion-nav-bar>
+  <p class="text-center invite-msg">
+                 Registration almost done! <br>Please enter the code we<br> just sent you<br>
+              </p>
+              
+                    <label class="item item-input item-floating-label item-borderless">
+                      <span class="input-label">code</span>
+                      <input type="tel" id="input-text-color" class="input-no-error" ng-keyup="checkotp()" name="otpcode" ng-model="Code.otpcode" required>
+                    </label>
+              
+</ion-view>

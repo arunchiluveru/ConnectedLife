@@ -1,0 +1,17 @@
+<ion-popover-view  ng-controller="camerapickCtrl">
+  <ion-header-bar class="bar-assertive " align-title="center">
+      <h1 class="title">Please Choose an Option</h1>
+    </ion-header-bar>
+  <ion-content>
+            
+            <div id="popupblock">
+              <button class="button button-block button-light icon-left ion-camera" ng-click="takepic()">
+                Take a Picture
+              </button>
+              <button class="button button-block button-light icon-left ion-images" ng-click="getpic()">
+                Choose from gallery
+              </button>
+            </div>
+           
+  </ion-content>
+</ion-popover-view>

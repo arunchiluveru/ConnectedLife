@@ -1,0 +1,54 @@
+<ion-view >
+  <ion-nav-bar class="bar-clear">
+  <ion-nav-buttons class="nbutton-bgcolor" side="left" >
+    <button class=" button button-dark header-item" ng-click="goBack()">
+      <i class="icon ion-arrow-left-c"> </i> 
+    </button>
+  </ion-nav-buttons>
+</ion-nav-bar>
+  <ion-content>
+              <p class="text-center invite-msg">
+                 Invite your Companions to <br>Connected Life<br>
+              </p>
+
+              <form ng-submit="doInvite()" name="InviteForm" >
+                  <div class="list">
+                    <label class="item item-input item-floating-label item-borderless">
+                      <span class="input-label">Name</span>
+                      <input id="input-text-color" type="text" placeholder="Name" name="username" ng-model="InviteData.username"  class="input-no-error" pattern="^[a-zA-Z]+$" ng-blur="invitename()" required>
+                    </label>
+                    <hr ng-show="InviteForm.username.$touched && InviteForm.username.$invalid && InviteForm.username.$error.pattern" class="input-with-error">
+                    <div ng-messages="InviteForm.username.$error" ng-if="InviteForm.username.$touched" class="error-mgs-container">
+                      <div ng-message="required">Empty Filed</div>
+                      <div ng-message="pattern">Invalid name</div>
+                    </div>
+             
+                    <label class="item item-input item-floating-label item-borderless">
+                      <span class="input-label">Mobile number</span>
+                      <input id="input-text-color" class="input-no-error" type="tel" inputmode="numeric" name="mobile" placeholder="Mobile Number" ng-model="InviteData.mobile"  pattern="^(\+\d{1,3}?)?\d{8,10}$" ng-blur="invitenumber()" required>
+                    <hr ng-show="InviteForm.mobile.$touched && InviteForm.mobile.$invalid && InviteForm.mobile.$error.pattern" class="input-with-error">
+                    <div ng-messages="InviteForm.mobile.$error" ng-if="InviteForm.mobile.$touched" class="error-mgs-container">
+                      <div ng-message="required">Empty Filed</div>
+                      <div ng-message="pattern">Invalid Mobile number</div>
+                    </div>
+                  </div>
+              </form>
+            
+
+              <div class="row" ng-controller="searchcontactsCtrl">
+                <div class="col text-center">
+                  <button id="searchcontacts" class="button button-clear " type="submit" ng-click="searchContacts()">Search Contacts</button>
+                </div>
+              </div>
+            
+              <div class="invite-item">
+               <div class="row">
+                <div class="col text-center">  
+                  <button class="button button-block button-assertive" type="submit" ng-click="sendSMS()">Invite</button>
+                  <a class="skip-for-now" >Skip for now</a>
+                </div>
+               </div>    
+              </div>
+           
+  </ion-content>
+</ion-view>

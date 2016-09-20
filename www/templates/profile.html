@@ -1,0 +1,28 @@
+<ion-view >
+  
+  <ion-content>
+            <p class="text-center account-created-msg">
+                 Account Created! <br>Add your Profile Photo<br>
+                 </p>
+
+            <div>
+
+              <div class="row ">
+                <div class="col text-center">
+                  <img class="profile-image"  id="imgcapture" src="img/human_icon.png"/>
+                  <button id="photo" class="button button-clear " ng-click="updatephotoclick($event)" type="submit">Update Photo</button>
+                </div>
+              </div>
+            </div>
+             <div class="profile-item">
+               <div class="row">
+                <div class="col text-center">  
+                  <button class="button button-block button-balanced" type="submit" ng-click="onnext()">Next</button>
+                  <a class="skip-for-now" >Skip for now</a>
+                </div>
+               </div>   
+               
+             </div>
+           
+  </ion-content>
+</ion-view>

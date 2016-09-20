@@ -1,0 +1,105 @@
+<ion-view view-title="ConnectedLife">
+  <ion-header-bar class="bar-assertive " align-title="center">
+         <h1 class="title">Connected Life</h1>
+       </ion-header-bar>
+  <ion-content>
+   <div class="button-bar padding">
+             <a class="button-clear button-assertive" grouped-radio="'Login'" ng-model="data.gender" ng-click="tabLoginClicked()" >SIGN IN</a>
+             <a class="button-clear button-assertive" grouped-radio="'Register'" ng-model="data.gender" ng-click="tabRegisterClicked()" >REGISTER</a>
+   </div>
+
+   <form ng-submit="doLogin()" name="loginForm" ng-show="isTabLoginClicked" ng-controller="loginformCtrl">
+           <div class="list">
+           <label class="item item-input item-floating-label item-borderless">
+               <span class="input-label" >Email Address</span>
+               <input id="input-text-color" class="input-no-error"
+                      name="email" placeholder="Email Address" type="email" ng-model="loginData.email "
+                      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" ng-blur="checkemail()" required>
+             </label>
+
+             <hr ng-show="loginForm.email.$touched && loginForm.email.$invalid && loginForm.email.$error.pattern" class="input-with-error">
+             <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched" class="error-mgs-container" ng-model='email_err'>{{email_err}}
+               <div ng-message="required">Please enter your email</div>
+               <div ng-message="pattern">Invalid Email</div>
+             </div>
+
+             <label class="item item-input item-floating-label item-borderless">
+               <span class="input-label" >Password</span>
+               <input id="input-text-color" class="input-no-error" type="password" placeholder="Password" name="password" ng-model="loginData.password"  ng-blur="checkpwd()" required>
+             </label>
+             <hr ng-show="loginForm.password.$touched && loginForm.password.$invalid" class="input-with-error">
+             <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched" class="error-mgs-container" ng-model='pwd_err'>{{pwd_err}}
+               <div ng-message="required">Please enter your Password</div>
+             </div>
+             <div class="signin-item">
+             <div class="row">
+                <div class="col text-center">  
+               		<button class="button button-block button-assertive" type="submit" ng-disabled="loginForm.$invalid || email_err ">Sign In</button>
+               		
+               		<a class="pwd-text-color" >Forgot password?</a>
+               		
+               	</div>
+             </div>
+             </div>
+           </div>
+    </form>
+
+    <form ng-submit="doRegister()" name="registerForm" ng-show="isTabRegisterClicked" ng-controller="registration">
+           <div class="list">
+             <label class="item item-input item-floating-label item-borderless">
+               <span class="input-label">Your Name</span>
+               <input id="input-text-color" type="text" placeholder="Your Name" name="username" ng-model="registerData.username"  class="input-no-error" pattern="^[a-zA-Z]+$" required>
+             </label>
+             <hr ng-show="registerForm.username.$touched && registerForm.username.$invalid && registerForm.username.$error.pattern" class="input-with-error">
+             <div ng-messages="registerForm.username.$error" ng-if="registerForm.username.$touched" class="error-mgs-container">
+               <div ng-message="required">Empty field</div>
+               <div ng-message="pattern">Invalid name</div>
+             </div>
+             <label class="item item-input item-floating-label item-borderless">
+               <span class="input-label">Email Address</span>
+               <input id="input-text-color" name="email" type="email" placeholder="Email Address" ng-model="registerData.email" class="input-no-error" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" ng-blur="regcheckemail()" required>
+             </label>
+             <hr ng-show="registerForm.email.$touched && registerForm.email.$invalid && registerForm.email.$error.pattern" class="input-with-error">
+             <div ng-messages="registerForm.email.$error" ng-if="registerForm.email.$touched" class="error-mgs-container" ng-model='regemail_err'>{{regemail_err}}
+               <div ng-message="required">Please enter your email</div>
+               <div ng-message="pattern">Invalid Email</div>
+             </div>
+
+
+
+             <label class="item item-input item-floating-label item-borderless">
+               <span class="input-label">Mobile number</span>
+               <input id="input-text-color" class="input-no-error" type="tel" inputmode="numeric" name="mobile" placeholder="Mobile Number" ng-model="registerData.mnumber"  pattern="^(\+\d{1,3}?)?\d{8,10}$" ng-blur="regmobchk()" required>
+             </label>
+             <hr ng-show="registerForm.mobile.$touched && registerForm.mobile.$invalid && registerForm.mobile.$error.pattern" class="input-with-error">
+             <div ng-messages="registerForm.mobile.$error" ng-if="registerForm.mobile.$touched" class="error-mgs-container" ng-model="regmnumber_err">{{regmnumber_err}}
+               <div ng-message="required">Please enter your Mobile Number</div>
+               <div ng-message="pattern">Invalid number</div>
+             </div>
+
+
+             <label class="item item-input item-floating-label item-borderless">
+               <span class="input-label">Password (min .8 characters)</span>
+               <input id="input-text-color" class="input-no-error" type="password" placeholder="Password" name="password" ng-minlength="6" ng-model="registerData.password"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}" required>
+             </label>
+             <hr ng-show="registerForm.password.$touched && registerForm.password.$invalid && registerForm.password.$error.pattern" class="input-with-error">
+             <div ng-messages="registerForm.password.$error" ng-if="registerForm.password.$touched" class="error-mgs-container">
+               <div ng-message="required">Please enter your Password</div>
+               <div ng-message="pattern">Invalid Password</div>
+             </div>
+
+             <div class="register-item">
+             <div class="row">
+                <div class="col text-center">  
+                 	<p class="privacy-policy">
+                	 By continuing, you agree to our <br>Terms of Service &amp; Privacy Policy<br>
+                 	</p>
+               		<button class="button button-block button-balanced" type="submit" ng-disabled="registerForm.$invalid || regmnumber_err || regemail_err" >Register</button>
+               		<a class="skip-for-now" >Skip for now</a>
+               	</div>
+             </div>
+             </div>
+           </div>
+    </form>
+  </ion-content>
+</ion-view>
